@@ -15,7 +15,7 @@ namespace OnlineShop.Application
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthService, AuthService>();
-
+            services.AddScoped<IProductService, ProductService>();
             return services;
         }
     }

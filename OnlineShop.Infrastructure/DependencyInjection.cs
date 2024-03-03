@@ -23,6 +23,7 @@ namespace OnlineShop.Infrastructure
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
             return services;
         }

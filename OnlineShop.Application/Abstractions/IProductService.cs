@@ -3,15 +3,14 @@ using OnlineShop.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineShop.Application.Abstractions.IBaseRepository;
 
 namespace OnlineShop.Application.Abstractions
 {
-    public interface IUserService
+    public interface IProductService
     {
-        public Task<string> Create(UserDTO userDTO);
-        public Task<User> GetByAny(Expression<Func<User, bool>> expression);
+        public Task<string> Create(ProductDTO productDTO);
     }
 }

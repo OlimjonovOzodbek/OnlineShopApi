@@ -19,8 +19,11 @@ namespace OnlineShop.Application.Services
             _userRepository = userRepository;
 
         }
-        public async Task<User> Create(UserDTO userDTO)
+        public async Task<string> Create(UserDTO userDTO)
         {
+            if (_userRepository.GetByAny(x => x.Email == userDTO.Email).Result == null && 
+                _userRepository.GetByAny(x => x.Login == userDTO.Login).Result == null) 
+            { 
             var user = new User()
             {
                 Name = userDTO.Name,
@@ -31,7 +34,9 @@ namespace OnlineShop.Application.Services
             };
             var result = await _userRepository.Create(user);
 
-            return result;
+            return "Succesfully added!✅";
+            }
+            return "User already exists😐";
         }
 
         public async Task<User> GetByAny(Expression<Func<User, bool>> expression)
