@@ -27,15 +27,17 @@ namespace OnlineShop.Application.Services
                 Email = userDTO.Email,
                 Login = userDTO.Login,
                 Password = userDTO.Password,
+                Role = userDTO.Role,
             };
             var result = await _userRepository.Create(user);
 
             return result;
         }
 
-        public Task<User> GetByAny(Expression<Func<User, bool>> expression)
+        public async Task<User> GetByAny(Expression<Func<User, bool>> expression)
         {
-            throw new NotImplementedException();
+            var result = await _userRepository.GetByAny(expression);
+            return result;
         }
     }
 }
