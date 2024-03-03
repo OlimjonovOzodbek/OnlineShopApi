@@ -7,16 +7,16 @@ namespace OnlineShop.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class LoginController : ControllerBase
     {
         private readonly IAuthService _authService;
 
-        public AuthController(IAuthService authService)
+        public LoginController(IAuthService authService)
         {
             _authService = authService;
         }
         [HttpPost]
-        public async Task<ActionResult<Tokenn>> Login([FromForm]RequestLogin model)
+        public async Task<ActionResult<Tokenn>> Login([FromForm] RequestLogin model)
         {
             var result = await _authService.GenerateToken(model);
 
