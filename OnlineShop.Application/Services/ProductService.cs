@@ -35,5 +35,10 @@ namespace OnlineShop.Application.Services
             }
             return "Product already exists😐";
         }
+
+        public async Task<IEnumerable<Product>> Get()
+        {
+            return await _product.GetAll();
+        }
     }
 }

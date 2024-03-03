@@ -25,5 +25,13 @@ namespace OnlineShop.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task <ActionResult<IEnumerable<Product>>> Getall()
+        {
+            var result = await _productService.Get();
+
+            return Ok(result);
+        }
     }
 }

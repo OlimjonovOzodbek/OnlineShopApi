@@ -43,7 +43,7 @@ namespace OnlineShop.Infrastructure.BaseRepo
             return true;
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             return await _dbSet.ToListAsync();
         }

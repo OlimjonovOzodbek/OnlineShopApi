@@ -12,5 +12,6 @@ namespace OnlineShop.Application.Abstractions
     public interface IProductService
     {
         public Task<string> Create(ProductDTO productDTO);
+        public Task<IEnumerable<Product>> Get();
     }
 }
