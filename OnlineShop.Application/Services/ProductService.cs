@@ -36,9 +36,30 @@ namespace OnlineShop.Application.Services
             return "Product already exists😐";
         }
 
+        public async Task<string> Delete(string name)
+        {
+            var res = await _product.Delete(x => x.Name==name);
+            return "Delete Product";
+        }
+
         public async Task<IEnumerable<Product>> Get()
         {
             return await _product.GetAll();
+        }
+
+        public async Task<ProductDTO> UpdateById(int id, ProductDTO productDTO)
+        {
+            var result = await _product.GetByAny(x => x.Id == id);
+            if (result != null)
+            {
+                result.Name = productDTO.Name;
+                result.Price = productDTO.Price;
+                result.GuaranteeDuration = productDTO.GuaranteeDuration;
+                result.MadeIn = productDTO.MadeIn;
+                await _product.Update(result);
+                return productDTO;
+            }
+            return null;
         }
     }
 }

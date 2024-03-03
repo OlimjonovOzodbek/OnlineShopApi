@@ -40,7 +40,7 @@ namespace OnlineShop.Application.Services
                 List<int> permissions = new List<int>();
                 if(result.Role == "Admin")
                     permissions = new List<int> { 1,2,3,4};
-                else if (result.Role == "Client")
+                else if (result.Role == "User")
                     permissions = new List<int> {4};
 
                 string permissionsJson = JsonSerializer.Serialize(permissions);

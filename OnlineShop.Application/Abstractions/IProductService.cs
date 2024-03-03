@@ -13,5 +13,7 @@ namespace OnlineShop.Application.Abstractions
     {
         public Task<string> Create(ProductDTO productDTO);
         public Task<IEnumerable<Product>> Get();
+        public Task<string> Delete(string name);
+        public Task<ProductDTO> UpdateById(int id, ProductDTO productDTO);
     }
 }

@@ -8,10 +8,10 @@ namespace OnlineShop.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class RegistrationController : ControllerBase
     {
         private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        public RegistrationController(IUserService userService)
         {
             _userService = userService;
         }
