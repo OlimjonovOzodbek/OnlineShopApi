@@ -10,6 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace OnlineShop.Application.Services
@@ -36,6 +37,13 @@ namespace OnlineShop.Application.Services
             if (await UserExist(requestLogin))
             {
                 var result = await _userService.GetByAny(x => x.Login == requestLogin.Login);
+                List<int> permissions = new List<int>();
+                if(result.Role == "Admin")
+                    permissions = new List<int> { 1,2,3,4};
+                else if (result.Role == "Client")
+                    permissions = new List<int> {4};
+
+                string permissionsJson = JsonSerializer.Serialize(permissions);
 
                 List<Claim> claims = new List<Claim>()
                 {
@@ -43,6 +51,7 @@ namespace OnlineShop.Application.Services
                     new Claim("Login", requestLogin.Login),
                     new Claim("UserID", result.Id.ToString()),
                     new Claim("CreatedDate", DateTime.UtcNow.ToString()),
+                    new Claim("permissions",permissionsJson)
                 };
 
                 return await GenerateToken(claims);
