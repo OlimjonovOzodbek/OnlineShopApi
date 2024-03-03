@@ -39,10 +39,20 @@ namespace OnlineShop.Application.Services
             return "User already exists😐";
         }
 
+        public async Task<IEnumerable<User>> GetAll()
+        {
+            var result = await _userRepository.GetAll();
+            return result;
+        }
+
         public async Task<User> GetByAny(Expression<Func<User, bool>> expression)
         {
             var result = await _userRepository.GetByAny(expression);
             return result;
         }
+
+
+
+
     }
 }
