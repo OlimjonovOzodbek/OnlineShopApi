@@ -39,9 +39,9 @@ namespace OnlineShop.Application.Services
                 var result = await _userService.GetByAny(x => x.Login == requestLogin.Login);
                 List<int> permissions = new List<int>();
                 if(result.Role == "Admin")
-                    permissions = new List<int> { 1,2,3,4};
+                    permissions = new List<int> { 1,2,3,4,5,6,7,8};
                 else if (result.Role == "User")
-                    permissions = new List<int> {4};
+                    permissions = new List<int> {4,5,6,7,8};
 
                 string permissionsJson = JsonSerializer.Serialize(permissions);
 

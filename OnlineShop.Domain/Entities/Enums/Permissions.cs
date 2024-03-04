@@ -11,6 +11,10 @@ namespace OnlineShop.Domain.Entities.Enums
         Create = 1,
         Update,
         Delete,
-        GetAll
+        GetAll,
+        GetKorzinka,
+        CreataKorzinka,
+        UpdateKorzinka, 
+        DeleteKorzinka
     }
 }
