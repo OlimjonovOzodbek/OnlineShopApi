@@ -24,7 +24,7 @@ namespace OnlineShop.API.Controllers
             return Ok(result);
         }
         [HttpGet]
-        public async Task<IEnumerable<User>> GetAll() 
+        public async Task<IEnumerable<ViewModel>> GetAll() 
         {
             var result = await _userService.GetAll();
             return result;

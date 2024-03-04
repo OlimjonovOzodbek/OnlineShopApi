@@ -14,6 +14,6 @@ namespace OnlineShop.Application.Abstractions
         public Task<string> Create(UserDTO userDTO);
         public Task<User> GetByAny(Expression<Func<User, bool>> expression);
 
-        public Task <IEnumerable<User>> GetAll();
+        public Task <IEnumerable<ViewModel>> GetAll();
     }
 }

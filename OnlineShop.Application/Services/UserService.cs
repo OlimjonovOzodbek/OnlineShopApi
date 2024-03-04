@@ -1,4 +1,5 @@
-﻿using OnlineShop.Application.Abstractions;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using OnlineShop.Application.Abstractions;
 using OnlineShop.Domain.Entities.DTOs;
 using OnlineShop.Domain.Entities.Models;
 using System;
@@ -39,10 +40,17 @@ namespace OnlineShop.Application.Services
             return "User already exists😐";
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<ViewModel>> GetAll()
         {
             var result = await _userRepository.GetAll();
-            return result;
+
+            var res = result.Select(model => new ViewModel
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Role = model.Role,
+            });
+            return res;
         }
 
         public async Task<User> GetByAny(Expression<Func<User, bool>> expression)
