@@ -13,5 +13,6 @@ namespace OnlineShop.Domain.Entities.Models
         public decimal Price { get; set; }
         public string GuaranteeDuration { get; set; }
         public string MadeIn {  get; set; }
+        public string Path { get; set; }
     }
 }

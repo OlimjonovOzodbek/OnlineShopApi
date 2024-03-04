@@ -17,7 +17,7 @@ namespace OnlineShop.Application.Services
         {
             _product = product;
         }
-        public async Task<string> Create(ProductDTO productDTO)
+        public async Task<string> Create(ProductDTO productDTO, string path)
         {
             if (_product.GetByAny(x => x.Name == productDTO.Name).Result == null) 
             {
@@ -27,6 +27,7 @@ namespace OnlineShop.Application.Services
                     Price = productDTO.Price,
                     GuaranteeDuration = productDTO.GuaranteeDuration,
                     MadeIn = productDTO.MadeIn,
+                    Path = path
                     
                 };
                 var result = await _product.Create(user);
@@ -47,7 +48,7 @@ namespace OnlineShop.Application.Services
             return await _product.GetAll();
         }
 
-        public async Task<ProductDTO> UpdateById(int id, ProductDTO productDTO)
+        public async Task<ProductDTO> UpdateById(int id, ProductDTO productDTO, string path)
         {
             var result = await _product.GetByAny(x => x.Id == id);
             if (result != null)
@@ -56,6 +57,7 @@ namespace OnlineShop.Application.Services
                 result.Price = productDTO.Price;
                 result.GuaranteeDuration = productDTO.GuaranteeDuration;
                 result.MadeIn = productDTO.MadeIn;
+                result.Path = path;
                 await _product.Update(result);
                 return productDTO;
             }
