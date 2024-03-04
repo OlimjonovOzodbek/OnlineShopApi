@@ -14,5 +14,7 @@ namespace OnlineShop.Infrastructure.Persistance
             :base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Korzinka> Korzinka { get; set; }
     }
 }
