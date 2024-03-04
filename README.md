@@ -1,1 +1,1 @@
-Bu men tomondan qilingan kichik online do'konning Api
+Online Shop API Generator using C# 04.03.2024
