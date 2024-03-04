@@ -46,10 +46,16 @@ namespace OnlineShop.Application.Services
 
         public async Task<Korzinka> UpdateByName(string name, KorzinkaDTO korzinka)
         {
-            var result = await _korzina.GetByAny(x => x.Name == name);
-            if (result != null)
+            if (_korzina.GetByAny(x => x.Name == name).Result == null)
             {
-                result.Name = korzinka.Name;
+                var result = await _korzina.GetByAny(x => x.Name == korzinka.Name);
+                if (result != null)
+                {
+                    result.Name = name;
+                    await _korzina.Update(result);
+                    return result;
+                }
+                return null;
             }
             return null;
         }

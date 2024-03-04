@@ -83,7 +83,7 @@ namespace OnlineShop.Application.Services
                 issuer: _conf["JWT:ValidIssuer"],
                 audience: _conf["JWT:ValidAudience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(exDate),
+                expires: DateTime.UtcNow.AddHours(exDate),
                 signingCredentials: credentials);
 
             return new Tokenn()
